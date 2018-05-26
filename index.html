@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>simple layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Kaushan+Script|Roboto:100,300,400,700,800">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/ThisIsDallas/Simple-Grid/master/simplegrid.css">
+  <link rel="stylesheet prefetch" 
+            	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+         
+  <link rel="stylesheet prefetch" 
+             	href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  
+  <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+
+			
+
+</head>
+
+<body>
+
+<html ng-app="angularModule">
+
+<header>
+  
+	<span class="u-pull-left"><a href="index.html" ><img src="Logo_frii.png" alt="logo" width="250px" height="50px"/></a></span>
+	<div class="u-pull-right">  <a href="#menu" id="toggle"><span></span></a> 
+  		<nav role="main" id="menu">
+   		  <ul>
+     		 <li><div>Products</div></li>
+       		 <li><div>Read more</div></li>
+     		 <li><div>Partners</div></li>
+    	  </ul>
+  		</nav>
+ 	 </div>
+  
+</header>
+
+<div ng-controller="ProductController">
+  <div class="cart-icon" id="cart">
+    <i class="shopping-cart-icon"></i> 
+  		<div class="cart">
+       	 <form  method="post" action="yourcart.php"  id="yourcart">
+        	<div class="cart-count">{{cartCount}}</div>
+				<div class="caption">
+					<h2>Total : <span>€{{getTotal()}}</span></h2>
+              		<div class="empty"><p>Your cart is empty</p></div>
+					<ol>
+					<li ng-repeat="item in cart">
+					<div class="thumb"><img src="{{item.product_image}}" alt="image photo" width="40px" height="40px"></div>
+					<div class="caption-text"><p>{{item.product_name}}  </p>
+					<p>€{{item.product_price}}</p></div>
+                    
+                    <input type="hidden" name="pname" value= "{{item.product_name}}"/>
+                	<input type="hidden" name="pimage" value="{{item.product_image}}"/>
+               		<input type="hidden" name="pquantity" value="1"/>
+                	<input type="hidden" name="pprice" value="{{ getTotal() }}"/>
+					
+                    <i class="fa fa-trash fa-lg" ng-click="removeItem($index)"></i></li><br>	
+					</ol>
+					<button class="btn-1">Check out</button> 
+				</div>
+            </form>
+		</div>
+  </div>
+   
+  				<div class="header2"> <p>Ut enim ad minim veniam</p>
+					<iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/nye4eAjtwT0" 		
+                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                    </iframe>		
+            	 </div>
+       			 <br>
+
+	<div class="container">
+		<div class="product">
+			<ul class="clearfix">
+				<li ng-repeat="product in products">
+    		     <div class="col-4-12">
+				 <img src="{{product.product_image}}" width="250" height="200px">
+				 </div>
+            
+					<div class="col-8-12">
+           				 <h2>{{product.product_name}}</h2>
+           				 <p>{{product.product_description}}</p>
+						 <p><strong>{{product.product_price}}€ + Shipping</strong></p>
+					</div>
+
+			<button class="btn-1" ng-click="addTocart($index)" ng-disabled="product.disable">{{product.cart_btn}}</button>
+            <button class="btn-2" ng-click="buyNow($index)" ng-disabled="product.disable">Buy now</button>
+				<hr> <br>
+				</li>
+			 </ul>
+		</div>
+	</div>
+    
+</div>
+
+
+
+<div class="footer"></div>
+
+
+   <script  src="index.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script  src="cart.js"></script>
+
+    
+
+
+</html>
+
+</body>
+
+</html>
